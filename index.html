@@ -139,6 +139,157 @@
         .footer-links a:hover { opacity: 1; }
         .footer-contact p { opacity: 0.7; margin-bottom: 0.5rem; font-size: 0.9rem; }
         .footer-bottom { text-align: center; padding-top: 1.5rem; opacity: 0.7; font-size: 0.85rem; }
+
+        /* ========== ADDITIONAL ROLES AND FLOWS STYLES ========== */
+        .rf-section { margin-bottom: 3rem; }
+        .rf-section-title { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 3px solid var(--primary); }
+        .rf-section-title h2 { font-size: 1.5rem; color: var(--primary); }
+        
+        /* Role Cards */
+        .role-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .role-card { background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid; transition: transform 0.3s, box-shadow 0.3s; }
+        .role-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+        .role-card.guest { border-color: var(--guest); }
+        .role-card.user { border-color: var(--user); }
+        .role-card.manager { border-color: var(--manager); }
+        .role-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .role-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; }
+        .role-card.guest .role-icon { background: var(--guest); }
+        .role-card.user .role-icon { background: var(--user); }
+        .role-card.manager .role-icon { background: var(--manager); }
+        .role-header h3 { font-size: 1.2rem; }
+        .role-header span { font-size: 0.85rem; color: var(--text-light); }
+        .role-desc { color: var(--text-light); margin-bottom: 1rem; font-size: 0.95rem; }
+        .role-features { list-style: none; }
+        .role-features li { padding: 0.4rem 0; padding-left: 1.5rem; position: relative; font-size: 0.9rem; }
+        .role-features li::before { content: "✓"; position: absolute; left: 0; color: var(--success); font-weight: bold; }
+        
+        /* Hierarchy */
+        .hierarchy { background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .hierarchy-level { padding: 1rem; margin-bottom: 0.5rem; border-radius: 12px; border: 2px solid; }
+        .hierarchy-level.admin { background: #FCE4EC; border-color: var(--manager); }
+        .hierarchy-level.manager-store { background: #FFF3E0; border-color: var(--warning); margin-left: 2rem; }
+        .hierarchy-level.user-level { background: #E3F2FD; border-color: var(--user); margin-left: 4rem; }
+        .hierarchy-level.guest-level { background: #F5F5F5; border-color: var(--guest); margin-left: 6rem; }
+        .hierarchy-level h4 { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+        .hierarchy-level ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .hierarchy-level ul li { background: rgba(255,255,255,0.7); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; }
+        
+        /* Tier Cards */
+        .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        .tier-card { background: white; border-radius: 16px; padding: 1.5rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s; }
+        .tier-card:hover { transform: translateY(-5px); }
+        .tier-badge { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .tier-card h4 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+        .tier-points { color: var(--text-light); font-size: 0.85rem; margin-bottom: 1rem; }
+        .tier-card ul { list-style: none; text-align: left; }
+        .tier-card ul li { padding: 0.3rem 0; font-size: 0.9rem; border-bottom: 1px solid #eee; }
+        .tier-card ul li:last-child { border-bottom: none; }
+        .tier-card.bronze { border-top: 4px solid #CD7F32; }
+        .tier-card.silver { border-top: 4px solid #C0C0C0; }
+        .tier-card.gold { border-top: 4px solid #FFD700; }
+        .tier-card.platinum { border-top: 4px solid #E5E4E2; background: linear-gradient(135deg, #fff 0%, #f8f8ff 100%); }
+        
+        /* Flow Cards */
+        .flow-card { background: white; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .flow-card h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1.1rem; }
+        .flow-steps { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+        .flow-steps.vertical { flex-direction: column; align-items: stretch; }
+        .flow-step { background: var(--background); padding: 1rem; border-radius: 12px; display: flex; align-items: flex-start; gap: 0.75rem; flex: 1; min-width: 150px; }
+        .flow-steps.vertical .flow-step { flex: none; }
+        .step-number { width: 30px; height: 30px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; flex-shrink: 0; }
+        .flow-step.success .step-number { background: var(--success); }
+        .step-content h4 { font-size: 0.9rem; margin-bottom: 0.25rem; }
+        .step-content p { font-size: 0.8rem; color: var(--text-light); }
+        .flow-arrow { color: var(--primary); font-size: 1.5rem; font-weight: bold; }
+        
+        /* Status Flow */
+        .status-flow { background: white; border-radius: 16px; padding: 1.5rem; margin-top: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .status-flow h3 { color: var(--primary); margin-bottom: 1.5rem; text-align: center; }
+        .status-diagram { display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
+        .status-item { text-align: center; padding: 1rem; border-radius: 12px; min-width: 100px; }
+        .status-icon { font-size: 1.5rem; display: block; margin-bottom: 0.25rem; }
+        .status-item span { display: block; font-weight: 600; font-size: 0.85rem; }
+        .status-item small { font-size: 0.75rem; color: var(--text-light); }
+        .status-item.pending { background: #FFF3E0; }
+        .status-item.making { background: #E3F2FD; }
+        .status-item.shipping { background: #F3E5F5; }
+        .status-item.ready { background: #E8F5E9; }
+        .status-item.done { background: #C8E6C9; }
+        .status-arrow { font-size: 1.5rem; color: var(--text-light); }
+        .status-branch { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+        .branch-or { font-size: 0.75rem; color: var(--text-light); }
+        .status-cancel { text-align: center; margin-top: 1rem; padding: 0.75rem; background: #FFEBEE; border-radius: 8px; color: #C62828; font-size: 0.85rem; }
+        
+        /* Matrix Table */
+        .matrix-container { overflow-x: auto; }
+        .matrix-table { width: 100%; border-collapse: collapse; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .matrix-table th, .matrix-table td { padding: 0.75rem 1rem; text-align: center; border-bottom: 1px solid #eee; }
+        .matrix-table th { background: var(--primary); color: white; font-weight: 600; }
+        .matrix-table th:first-child { text-align: left; }
+        .matrix-table td:first-child { text-align: left; font-weight: 500; }
+        .matrix-table .category-row td { background: var(--primary-light); font-weight: 600; color: var(--primary); }
+        .matrix-table .yes { color: var(--success); }
+        .matrix-table .no { color: #ccc; }
+        .matrix-table .admin { color: var(--primary); font-size: 0.85rem; }
+        .guest-col { background: rgba(158, 158, 158, 0.1) !important; }
+        .user-col { background: rgba(33, 150, 243, 0.1) !important; }
+        .manager-col { background: rgba(147, 25, 35, 0.1) !important; }
+        
+        /* Transition Diagram */
+        .transition-diagram { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 2rem; background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .transition-item { padding: 1rem 2rem; border-radius: 12px; text-align: center; min-width: 180px; }
+        .transition-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+        .transition-item h4 { font-size: 1rem; }
+        .guest-box { background: #F5F5F5; border: 2px solid var(--guest); }
+        .user-box { background: #E3F2FD; border: 2px solid var(--user); }
+        .manager-box { background: #FFF3E0; border: 2px solid var(--warning); }
+        .admin-box { background: #FCE4EC; border: 2px solid var(--manager); }
+        .transition-arrow { text-align: center; padding: 0.5rem; }
+        .transition-arrow span { font-size: 0.8rem; color: var(--text-light); display: block; }
+        .arrow-line { font-size: 1.5rem; color: var(--primary); }
+        
+        /* API Examples */
+        .api-examples { margin-top: 2rem; background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .api-examples h3 { color: var(--primary); margin-bottom: 1rem; }
+        .api-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: var(--background); border-radius: 8px; margin-bottom: 0.5rem; flex-wrap: wrap; }
+        .api-method { background: var(--success); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+        .api-method.delete { background: #F44336; }
+        .api-endpoint { background: #263238; color: #4FC3F7; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; }
+        .api-desc { font-size: 0.85rem; color: var(--text-light); }
+        
+        /* Group Order Flow */
+        .group-order-flow { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 1rem; }
+        .group-column { background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .group-column h4 { text-align: center; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid; }
+        .group-column.host h4 { color: var(--primary); border-color: var(--primary); }
+        .group-column.shared h4 { color: var(--info); border-color: var(--info); }
+        .group-column.member h4 { color: var(--success); border-color: var(--success); }
+        .group-step { padding: 0.5rem 0.75rem; background: var(--background); border-radius: 8px; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .group-feature { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem; background: var(--background); border-radius: 8px; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .group-feature span { font-size: 1.2rem; }
+        
+        /* Summary */
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .summary-card { background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .summary-card h4 { color: var(--primary); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary-light); }
+        .summary-card ul { list-style: none; }
+        .summary-card ul li { padding: 0.4rem 0; font-size: 0.9rem; }
+        
+        /* Animation for roles and flows */
+        .role-card, .tier-card, .flow-card, .status-flow, .hierarchy, .summary-card { 
+            animation: fadeInUp 0.6s ease-out; 
+        }
+        .role-card:nth-child(2) { animation-delay: 0.1s; }
+        .role-card:nth-child(3) { animation-delay: 0.2s; }
+        .tier-card:nth-child(2) { animation-delay: 0.1s; }
+        .tier-card:nth-child(3) { animation-delay: 0.2s; }
+        .tier-card:nth-child(4) { animation-delay: 0.3s; }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         
         @media (max-width: 768px) {
             .hero-container { grid-template-columns: 1fr; text-align: center; }
@@ -149,6 +300,14 @@
             .unique-item { flex-direction: column; gap: 1rem; }
             .download-container { grid-template-columns: 1fr; text-align: center; }
             .download-info { justify-content: center; }
+            .role-grid { grid-template-columns: 1fr; }
+            .hierarchy-level { margin-left: 0 !important; }
+            .flow-steps { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+            .status-diagram { flex-direction: column; }
+            .status-arrow { transform: rotate(90deg); }
+            .matrix-table { font-size: 0.8rem; }
+            .group-order-flow { grid-template-columns: 1fr; }
             .footer-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -165,6 +324,8 @@
                 <li><a href="#unique">Điểm nổi bật</a></li>
                 <li><a href="#tech">Công nghệ</a></li>
                 <li><a href="#team">Nhóm phát triển</a></li>
+                <li><a href="#roles">Phân quyền</a></li>
+                <li><a href="#flows">Luồng hoạt động</a></li>
                 <li><a href="#download">Tải app</a></li>
             </ul>
         </nav>
@@ -416,6 +577,514 @@
         </div>
     </section>
 
+
+
+    <!-- Section Divider -->
+    <section class="section-gradient" style="padding: 2rem 0; text-align: center;">
+        <div class="container">
+            <h2 style="color: white; font-size: 2rem; margin-bottom: 0.5rem;">🎭 Hệ Thống Phân Quyền & Luồng Hoạt Động</h2>
+            <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem;">Tài liệu chi tiết về 3 role chính và các luồng hoạt động trong hệ thống UTE Tea</p>
+        </div>
+    </section>
+
+    <!-- ========== ROLES AND FLOWS SECTION ========== -->
+    <section class="section" style="background: var(--background);">
+        <div class="container">
+            <!-- Tổng quan Role -->
+        <section class="rf-section" id="roles">
+            <div class="rf-section-title">
+                <span style="font-size: 1.5rem;">👥</span>
+                <h2>Tổng Quan Hệ Thống Phân Quyền</h2>
+            </div>
+            
+            <div class="role-grid">
+                <div class="role-card guest">
+                    <div class="role-header">
+                        <div class="role-icon">👤</div>
+                        <div>
+                            <h3>GUEST</h3>
+                            <span>Khách chưa đăng nhập</span>
+                        </div>
+                    </div>
+                    <p class="role-desc">Người dùng truy cập ứng dụng nhưng chưa đăng nhập. Có thể xem thông tin nhưng không thể thực hiện các hành động yêu cầu xác thực.</p>
+                    <ul class="role-features">
+                        <li>Xem trang chủ, banner, best seller</li>
+                        <li>Xem thực đơn và chi tiết sản phẩm</li>
+                        <li>Tìm kiếm sản phẩm (text & voice)</li>
+                        <li>Xem đánh giá sản phẩm</li>
+                        <li>Xem danh sách cửa hàng</li>
+                        <li>Đăng ký tài khoản mới</li>
+                    </ul>
+                </div>
+                
+                <div class="role-card user">
+                    <div class="role-header">
+                        <div class="role-icon">🧑</div>
+                        <div>
+                            <h3>USER</h3>
+                            <span>Người dùng đã đăng nhập</span>
+                        </div>
+                    </div>
+                    <p class="role-desc">Người dùng đã đăng ký và đăng nhập vào hệ thống. Có đầy đủ quyền sử dụng các tính năng dành cho khách hàng.</p>
+                    <ul class="role-features">
+                        <li>Tất cả quyền của Guest</li>
+                        <li>Đặt hàng, thanh toán đa dạng</li>
+                        <li>Quản lý giỏ hàng, áp voucher</li>
+                        <li>Đánh giá sản phẩm sau khi mua</li>
+                        <li>Tích điểm, quay vòng xoay</li>
+                        <li>Đặt hàng nhóm, Live Chat</li>
+                        <li>Voice Order, AI Predictive Order</li>
+                    </ul>
+                </div>
+                
+                <div class="role-card manager">
+                    <div class="role-header">
+                        <div class="role-icon">👨‍💼</div>
+                        <div>
+                            <h3>MANAGER</h3>
+                            <span>Quản lý (bao gồm Admin)</span>
+                        </div>
+                    </div>
+                    <p class="role-desc">Người quản lý cửa hàng, có quyền quản lý đơn hàng, sản phẩm, người dùng và xem thống kê. Admin là Manager với quyền cao nhất.</p>
+                    <ul class="role-features">
+                        <li>Quản lý đơn hàng của store</li>
+                        <li>CRUD sản phẩm, danh mục</li>
+                        <li>Tạo/Quản lý voucher</li>
+                        <li>Khóa/Mở khóa người dùng</li>
+                        <li>Dashboard thống kê, dự báo</li>
+                        <li>Live Chat hỗ trợ khách hàng</li>
+                        <li>Monitoring & Risk Score (Admin)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Hierarchy -->
+            <div class="hierarchy">
+                <h3 style="margin-bottom: 1rem; color: var(--primary);">📊 Sơ Đồ Phân Cấp Quyền</h3>
+                <div class="hierarchy-level admin">
+                    <h4>👑 MANAGER (Admin)</h4>
+                    <ul>
+                        <li>Quản lý TẤT CẢ stores</li>
+                        <li>Nâng/Hạ cấp User ↔ Manager</li>
+                        <li>Gán store cho Manager</li>
+                        <li>Whitelist IP</li>
+                        <li>Monitoring & Risk Score</li>
+                    </ul>
+                </div>
+                <div class="hierarchy-level manager-store">
+                    <h4>🏪 MANAGER (Store)</h4>
+                    <ul>
+                        <li>Quản lý stores được gán</li>
+                        <li>Quản lý đơn hàng</li>
+                        <li>Khóa/Mở khóa USER</li>
+                        <li>Voucher & Live Chat</li>
+                        <li>Dashboard store</li>
+                    </ul>
+                </div>
+                <div class="hierarchy-level user-level">
+                    <h4>🧑 USER</h4>
+                    <ul>
+                        <li>Đặt hàng & Thanh toán</li>
+                        <li>Giỏ hàng & Voucher</li>
+                        <li>Đánh giá sản phẩm</li>
+                        <li>Loyalty & Spin Wheel</li>
+                        <li>Group Order</li>
+                    </ul>
+                </div>
+                <div class="hierarchy-level guest-level">
+                    <h4>👤 GUEST</h4>
+                    <ul>
+                        <li>Xem sản phẩm</li>
+                        <li>Tìm kiếm</li>
+                        <li>Xem cửa hàng</li>
+                        <li>Xem đánh giá</li>
+                        <li>Đăng ký</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Member Tier -->
+        <section class="rf-section">
+            <div class="rf-section-title">
+                <span style="font-size: 1.5rem;">🏆</span>
+                <h2>Hạng Thành Viên (Member Tier)</h2>
+            </div>
+            <div class="tier-grid">
+                <div class="tier-card bronze">
+                    <div class="tier-badge">🥉</div>
+                    <h4>BRONZE</h4>
+                    <p class="tier-points">0 - 49 điểm</p>
+                    <ul>
+                        <li>Giảm giá: <strong>0%</strong></li>
+                        <li>Nhân điểm: <strong>1x</strong></li>
+                        <li>Free Ship: <strong>❌</strong></li>
+                    </ul>
+                </div>
+                <div class="tier-card silver">
+                    <div class="tier-badge">🥈</div>
+                    <h4>SILVER</h4>
+                    <p class="tier-points">50 - 149 điểm</p>
+                    <ul>
+                        <li>Giảm giá: <strong>5%</strong></li>
+                        <li>Nhân điểm: <strong>1.5x</strong></li>
+                        <li>Free Ship: <strong>Đơn từ 100K</strong></li>
+                    </ul>
+                </div>
+                <div class="tier-card gold">
+                    <div class="tier-badge">🥇</div>
+                    <h4>GOLD</h4>
+                    <p class="tier-points">150 - 299 điểm</p>
+                    <ul>
+                        <li>Giảm giá: <strong>10%</strong></li>
+                        <li>Nhân điểm: <strong>2x</strong></li>
+                        <li>Free Ship: <strong>Đơn từ 50K</strong></li>
+                    </ul>
+                </div>
+                <div class="tier-card platinum">
+                    <div class="tier-badge">💎</div>
+                    <h4>PLATINUM</h4>
+                    <p class="tier-points">300+ điểm</p>
+                    <ul>
+                        <li>Giảm giá: <strong>15%</strong></li>
+                        <li>Nhân điểm: <strong>3x</strong></li>
+                        <li>Free Ship: <strong>Mọi đơn</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Luồng hoạt động -->
+        <section class="rf-section" id="flows">
+            <div class="rf-section-title">
+                <span style="font-size: 1.5rem;">🔄</span>
+                <h2>Luồng Hoạt Động Chính</h2>
+            </div>
+            
+            <!-- Flow: Đăng ký -->
+            <div class="flow-card">
+                <h3>📝 Luồng Đăng Ký Tài Khoản</h3>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Nhập thông tin</h4>
+                            <p>Username, Email, Password, Phone, Full Name</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Gửi OTP</h4>
+                            <p>Backend tạo OTP 6 số, gửi qua Email (5 phút)</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Xác thực OTP</h4>
+                            <p>Nhập mã OTP, verify, kích hoạt tài khoản</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step success">
+                        <div class="step-number">✓</div>
+                        <div class="step-content">
+                            <h4>Hoàn tất</h4>
+                            <p>Role: USER, Tier: BRONZE, Points: 0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Flow: Đăng nhập -->
+            <div class="flow-card">
+                <h3>🔐 Luồng Đăng Nhập</h3>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Nhập credentials</h4>
+                            <p>Username/Phone + Password hoặc Biometric</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Xác thực</h4>
+                            <p>Verify credentials, kiểm tra active & block</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>JWT Token</h4>
+                            <p>Access Token (24h) + Refresh Token</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step success">
+                        <div class="step-number">✓</div>
+                        <div class="step-content">
+                            <h4>Redirect</h4>
+                            <p>USER → MainActivity | MANAGER → Dashboard</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Flow: Đặt hàng -->
+            <div class="flow-card">
+                <h3>🛒 Luồng Đặt Hàng (USER)</h3>
+                <div class="flow-steps vertical">
+                    <div class="flow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Chọn sản phẩm</h4>
+                            <p>Xem Menu / Tìm kiếm / Voice Search → Chọn Size, Topping, Số lượng</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Thêm vào giỏ hàng</h4>
+                            <p>Tính giá: (basePrice + sizeExtra + toppings) × quantity</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Áp dụng giảm giá</h4>
+                            <p>Voucher promotion + Voucher Spin Wheel + Tier Discount</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Chọn giao hàng</h4>
+                            <p>DELIVERY / PICKUP → Chọn store → Nhập địa chỉ → Tính phí ship</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Thanh toán</h4>
+                            <p>COD / VNPay / MoMo / PayPal / VietQR</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Xác nhận đơn</h4>
+                            <p>Preview Bill → OTP xác thực → Tạo đơn (PENDING)</p>
+                        </div>
+                    </div>
+                    <div class="flow-step success">
+                        <div class="step-number">✓</div>
+                        <div class="step-content">
+                            <h4>Theo dõi đơn hàng</h4>
+                            <p>WebSocket realtime: PENDING → MAKING → SHIPPING → DONE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Order Status Flow -->
+            <div class="status-flow">
+                <h3>📦 Vòng Đời Đơn Hàng</h3>
+                <div class="status-diagram">
+                    <div class="status-item pending">
+                        <span class="status-icon">⏳</span>
+                        <span>PENDING</span>
+                        <small>Chờ xử lý</small>
+                    </div>
+                    <div class="status-arrow">→</div>
+                    <div class="status-item making">
+                        <span class="status-icon">🧋</span>
+                        <span>MAKING</span>
+                        <small>Đang pha chế</small>
+                    </div>
+                    <div class="status-arrow">→</div>
+                    <div class="status-branch">
+                        <div class="branch-item">
+                            <div class="status-item shipping">
+                                <span class="status-icon">🚚</span>
+                                <span>SHIPPING</span>
+                                <small>Đang giao</small>
+                            </div>
+                        </div>
+                        <div class="branch-or">hoặc</div>
+                        <div class="branch-item">
+                            <div class="status-item ready">
+                                <span class="status-icon">✅</span>
+                                <span>READY</span>
+                                <small>Sẵn sàng</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-arrow">→</div>
+                    <div class="status-item done">
+                        <span class="status-icon">🎉</span>
+                        <span>DONE</span>
+                        <small>Hoàn thành</small>
+                    </div>
+                </div>
+                <div class="status-cancel">
+                    <span>❌ CANCELED - CHỉ có thể hủy lúc chờ xử lý</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ma trận chức năng -->
+        <section class="rf-section" id="matrix">
+            <div class="rf-section-title">
+                <span style="font-size: 1.5rem;">📋</span>
+                <h2>Ma Trận Chức Năng Theo Role</h2>
+            </div>
+            
+            <div class="matrix-container">
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th>Chức năng</th>
+                            <th class="guest-col">👤 GUEST</th>
+                            <th class="user-col">🧑 USER</th>
+                            <th class="manager-col">👨‍💼 MANAGER</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="category-row"><td colspan="4">📖 Chức năng XEM (Read)</td></tr>
+                        <tr><td>Xem trang chủ</td><td class="yes">✅</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+                        <tr><td>Xem thực đơn</td><td class="yes">✅</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+                        <tr><td>Xem chi tiết sản phẩm</td><td class="yes">✅</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+                        <tr><td>Xem đánh giá sản phẩm</td><td class="yes">✅</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+                        <tr><td>Xem cửa hàng</td><td class="yes">✅</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+                        <tr><td>Xem giỏ hàng</td><td class="no">❌</td><td class="yes">✅</td><td class="no">❌</td></tr>
+                        <tr><td>Xem lịch sử đơn hàng (của mình)</td><td class="no">❌</td><td class="yes">✅</td><td class="no">❌</td></tr>
+                        <tr><td>Xem đơn hàng (của store)</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        <tr><td>Xem dashboard thống kê</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        <tr><td>Xem danh sách người dùng</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        <tr><td>Xem monitoring/risk score</td><td class="no">❌</td><td class="no">❌</td><td class="admin">✅ Admin</td></tr>
+                        
+                        <tr class="category-row"><td colspan="4">➕ Chức năng TẠO (Create)</td></tr>
+                        <tr><td>Đăng ký tài khoản</td><td class="yes">✅</td><td class="no">❌</td><td class="no">❌</td></tr>
+                        <tr><td>Thêm vào giỏ hàng</td><td class="no">❌</td><td class="yes">✅</td><td class="no">❌</td></tr>
+                        <tr><td>Tạo đơn hàng</td><td class="no">❌</td><td class="yes">✅</td><td class="no">❌</td></tr>
+                        <tr><td>Tạo đánh giá</td><td class="no">❌</td><td class="yes">✅</td><td class="no">❌</td></tr>
+                        <tr><td>Tạo phiên đặt hàng nhóm</td><td class="no">❌</td><td class="yes">✅</td><td class="no">❌</td></tr>
+                        <tr><td>Tạo voucher</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        <tr><td>Tạo sản phẩm</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        <tr><td>Gửi thông báo</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        
+                        <tr class="category-row"><td colspan="4">✏️ Chức năng SỬA (Update)</td></tr>
+                        <tr><td>Sửa profile</td><td class="no">❌</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+                        <tr><td>Sửa giỏ hàng</td><td class="no">❌</td><td class="yes">✅</td><td class="no">❌</td></tr>
+                        <tr><td>Cập nhật trạng thái đơn hàng</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        <tr><td>Sửa voucher</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        <tr><td>Sửa sản phẩm</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        <tr><td>Khóa/Mở khóa USER</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        <tr><td>Khóa/Mở khóa MANAGER</td><td class="no">❌</td><td class="no">❌</td><td class="admin">✅ Admin</td></tr>
+                        <tr><td>Nâng cấp User → Manager</td><td class="no">❌</td><td class="no">❌</td><td class="admin">✅ Admin</td></tr>
+                        <tr><td>Gán store cho Manager</td><td class="no">❌</td><td class="no">❌</td><td class="admin">✅ Admin</td></tr>
+                        
+                        <tr class="category-row"><td colspan="4">🗑️ Chức năng XÓA (Delete)</td></tr>
+                        <tr><td>Xóa tài khoản (của mình)</td><td class="no">❌</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+                        <tr><td>Xóa sản phẩm trong giỏ</td><td class="no">❌</td><td class="yes">✅</td><td class="no">❌</td></tr>
+                        <tr><td>Hủy đơn hàng (của mình)</td><td class="no">❌</td><td class="yes">✅</td><td class="no">❌</td></tr>
+                        <tr><td>Hủy đơn hàng (của store)</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        <tr><td>Xóa voucher</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        <tr><td>Xóa sản phẩm</td><td class="no">❌</td><td class="no">❌</td><td class="yes">✅</td></tr>
+                        <tr><td>Block IP</td><td class="no">❌</td><td class="no">❌</td><td class="admin">✅ Admin</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Group Order Flow -->
+        <section class="rf-section">
+            <div class="rf-section-title">
+                <span style="font-size: 1.5rem;">👥</span>
+                <h2>Luồng Đặt Hàng Nhóm (Group Order)</h2>
+            </div>
+            
+            <div class="group-order-flow">
+                <div class="group-column host">
+                    <h4>🎯 HOST (Người tạo)</h4>
+                    <div class="group-step">1. Tạo phiên nhóm</div>
+                    <div class="group-step">2. Nhận Invite Code (6 ký tự)</div>
+                    <div class="group-step">3. Share link / QR Code</div>
+                    <div class="group-step">4. Thêm món của mình</div>
+                    <div class="group-step">5. Lock/Unlock phiên</div>
+                    <div class="group-step">6. Checkout cho cả nhóm</div>
+                </div>
+                <div class="group-column shared">
+                    <h4>💬 PHIÊN NHÓM (Realtime)</h4>
+                    <div class="group-feature">
+                        <span>🧋</span> Tất cả thành viên thêm món
+                    </div>
+                    <div class="group-feature">
+                        <span>💬</span> Chat nhóm realtime (WebSocket)
+                    </div>
+                    <div class="group-feature">
+                        <span>📋</span> Xem danh sách món của mọi người
+                    </div>
+                    <div class="group-feature">
+                        <span>💰</span> Tính tổng tiền realtime
+                    </div>
+                </div>
+                <div class="group-column member">
+                    <h4>👤 MEMBER (Thành viên)</h4>
+                    <div class="group-step">1. Nhận Invite Code</div>
+                    <div class="group-step">2. Nhập code để tham gia</div>
+                    <div class="group-step">3. Thêm món của mình</div>
+                    <div class="group-step">4. Chat với nhóm</div>
+                    <div class="group-step">5. Chờ Host checkout</div>
+                    <div class="group-step">6. Nhận thông báo đơn hàng</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="rf-section summary">
+            <div class="rf-section-title">
+                <span style="font-size: 1.5rem;">📊</span>
+                <h2>Tổng Kết</h2>
+            </div>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h4>3 Role Chính</h4>
+                    <ul>
+                        <li><strong>GUEST:</strong> Xem sản phẩm, tìm kiếm</li>
+                        <li><strong>USER:</strong> Đặt hàng, thanh toán, loyalty</li>
+                        <li><strong>MANAGER:</strong> Quản lý store, monitoring</li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <h4>Luồng Chuyển Đổi</h4>
+                    <ul>
+                        <li>GUEST → USER: Đăng ký + OTP</li>
+                        <li>USER → MANAGER: Admin nâng cấp</li>
+                        <li>MANAGER → USER: Admin hạ cấp</li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <h4>Bảo Mật</h4>
+                    <ul>
+                        <li>JWT Authentication</li>
+                        <li>Role-based Authorization</li>
+                        <li>Whitelist IP (Admin/Manager)</li>
+                        <li>Monitoring & Risk Score</li>
+                    </ul>
+                </div>
+            </div>
+                </div>
+            </div>
+        </section>
+    </section>
     <!-- Download Section -->
     <section class="download" id="download">
         <div class="download-container">
@@ -439,7 +1108,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer>
         <div class="footer-content">
