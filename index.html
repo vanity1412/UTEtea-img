@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -434,7 +433,7 @@
             </div>
             <div class="download-qr">
                 <div class="qr-container">
-                    <div id="qrcode"></div>
+                    <img src="qr.png" alt="QR Code tải app UTE Tea" style="width: 160px; height: 160px;">
                 </div>
                 <p class="qr-label">📱 Quét để tải app<span>Dùng camera điện thoại quét mã QR</span></p>
             </div>
@@ -486,32 +485,6 @@
             }
         }
 
-        // Generate QR Code
-        function generateQR() {
-            const currentUrl = window.location.href;
-            const apkUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1) + 'Houjicha-Uteatea.apk';
-            
-            if (typeof QRCode !== 'undefined') {
-                QRCode.toCanvas(document.createElement('canvas'), apkUrl, {
-                    width: 160,
-                    margin: 2,
-                    color: { dark: '#931923', light: '#ffffff' }
-                }, function(error, canvas) {
-                    if (error) {
-                        showQRFallback();
-                        return;
-                    }
-                    document.getElementById('qrcode').appendChild(canvas);
-                });
-            } else {
-                showQRFallback();
-            }
-        }
-
-        function showQRFallback() {
-            document.getElementById('qrcode').innerHTML = '<div style="width:160px;height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#931923,#B8293A);color:white;border-radius:10px;flex-direction:column;"><span style="font-size:2.5rem;">🍵</span><p style="margin-top:0.5rem;font-weight:600;font-size:0.9rem;">UTE Tea</p></div>';
-        }
-
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -523,7 +496,6 @@
 
         // Initialize
         createBubbles();
-        generateQR();
     </script>
 </body>
 </html>
