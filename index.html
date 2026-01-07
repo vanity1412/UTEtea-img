@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UTE Tea - Ứng dụng đặt trà sữa thông minh</title>
+    <title>UTE Tea - Ứng dụng đặt trà sữa thông minh với AI</title>
+    <meta name="description" content="UTE Tea - Ứng dụng đặt trà sữa thông minh với Voice Order, AI Predictive Order, Group Order và hệ thống Loyalty 4 cấp độ">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,120 +21,151 @@
             --text-light: #757575;
             --white: #FFFFFF;
             --background: #FFFAF0;
+            --success: #4CAF50;
+            --info: #2196F3;
         }
-        body {
-            font-family: 'Be Vietnam Pro', sans-serif;
-            background: var(--background);
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; background: var(--background); color: var(--text-dark); overflow-x: hidden; }
         .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
         .bubble { position: absolute; border-radius: 50%; animation: float 15s infinite ease-in-out; opacity: 0.1; }
-        @keyframes float {
-            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.1; }
-            90% { opacity: 0.1; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
-        }
-        header {
-            position: fixed; top: 0; left: 0; right: 0; padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-            z-index: 1000; box-shadow: 0 2px 20px rgba(147, 25, 35, 0.1);
-        }
+        @keyframes float { 0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.1; } 90% { opacity: 0.1; } 100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; } }
+        
+        header { position: fixed; top: 0; left: 0; right: 0; padding: 1rem 2rem; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 1000; box-shadow: 0 2px 20px rgba(147, 25, 35, 0.1); }
         nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .logo { display: flex; align-items: center; gap: 0.5rem; font-size: 1.5rem; font-weight: 800; color: var(--primary); }
         .logo span { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: var(--primary); }
+        
         .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 2rem 4rem; position: relative; }
         .hero-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero-content h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; }
         .hero-content h1 .highlight { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-content p { font-size: 1.2rem; color: var(--text-light); margin-bottom: 2rem; line-height: 1.8; }
+        .hero-content p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.8; }
+        .hero-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .badge { padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+        .badge-android { background: #3DDC84; color: white; }
+        .badge-kotlin { background: #7F52FF; color: white; }
+        .badge-spring { background: #6DB33F; color: white; }
+        .badge-ai { background: var(--primary); color: white; }
         .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
         .btn { padding: 1rem 2rem; border-radius: 50px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; cursor: pointer; border: none; }
         .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: var(--white); box-shadow: 0 10px 30px rgba(147, 25, 35, 0.3); }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(147, 25, 35, 0.4); }
         .btn-secondary { background: var(--white); color: var(--primary); border: 2px solid var(--primary); }
         .btn-secondary:hover { background: var(--primary-light); }
-        .hero-image { position: relative; display: flex; justify-content: center; }
-        .phone-mockup { width: 300px; height: 600px; background: linear-gradient(145deg, #1a1a1a, #2d2d2d); border-radius: 40px; padding: 10px; box-shadow: 0 50px 100px rgba(0, 0, 0, 0.3); animation: phoneFloat 6s ease-in-out infinite; }
-        .phone-screen { width: 100%; height: 100%; background: linear-gradient(180deg, var(--primary), var(--accent)); border-radius: 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; overflow: hidden; }
-        .phone-screen img { width: 100%; height: 100%; object-fit: cover; border-radius: 32px; }
-        @keyframes phoneFloat { 0%, 100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-20px) rotate(-5deg); } }
-        .features { padding: 6rem 2rem; background: var(--white); }
-        .section-title { text-align: center; margin-bottom: 4rem; }
-        .section-title h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
-        .section-title p { color: var(--text-light); font-size: 1.1rem; }
-        .features-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .feature-card { background: var(--background); padding: 2rem; border-radius: 20px; transition: all 0.3s ease; border: 1px solid transparent; }
-        .feature-card:hover { transform: translateY(-10px); border-color: var(--primary-light); box-shadow: 0 20px 40px rgba(147, 25, 35, 0.1); }
-        .feature-icon { width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
-        .feature-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--text-dark); }
-        .feature-card p { color: var(--text-light); line-height: 1.6; }
-        .highlights { padding: 6rem 2rem; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: var(--white); }
-        .highlights .section-title h2, .highlights .section-title p { color: var(--white); }
-        .highlights-container { max-width: 900px; margin: 0 auto; }
-        .highlight-item { display: flex; gap: 2rem; align-items: flex-start; padding: 2rem; background: rgba(255, 255, 255, 0.1); border-radius: 20px; margin-bottom: 1.5rem; backdrop-filter: blur(10px); transition: all 0.3s ease; }
-        .highlight-item:hover { background: rgba(255, 255, 255, 0.2); transform: translateX(10px); }
-        .highlight-number { font-size: 3rem; font-weight: 800; opacity: 0.3; line-height: 1; }
-        .highlight-content h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-        .highlight-content p { opacity: 0.9; line-height: 1.6; }
-        .tech { padding: 6rem 2rem; background: var(--white); }
-        .tech-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; }
-        .tech-card { text-align: center; padding: 2rem 1rem; background: var(--background); border-radius: 20px; transition: all 0.3s ease; }
+        .hero-image { position: relative; display: flex; justify-content: center; align-items: center; }
+        .banner-container { max-width: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3); animation: bannerFloat 6s ease-in-out infinite; }
+        .banner-container img { width: 100%; height: auto; display: block; }
+        @keyframes bannerFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        
+        .project-links { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .link-btn { padding: 0.6rem 1.2rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: all 0.3s ease; border: 2px solid; }
+        .link-figma { background: #F24E1E15; color: #F24E1E; border-color: #F24E1E; }
+        .link-figma:hover { background: #F24E1E; color: white; }
+        .link-github { background: #24292e15; color: #24292e; border-color: #24292e; }
+        .link-github:hover { background: #24292e; color: white; }
+        
+        .section { padding: 5rem 2rem; }
+        .section-white { background: var(--white); }
+        .section-gradient { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: var(--white); }
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .section-title h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .section-title p { color: var(--text-light); font-size: 1rem; }
+        .section-gradient .section-title h2, .section-gradient .section-title p { color: var(--white); }
+        
+        .features-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .feature-card { background: var(--background); padding: 1.5rem; border-radius: 20px; transition: all 0.3s ease; border: 1px solid transparent; }
+        .section-white .feature-card { background: var(--background); }
+        .feature-card:hover { transform: translateY(-8px); border-color: var(--primary-light); box-shadow: 0 20px 40px rgba(147, 25, 35, 0.1); }
+        .feature-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-dark); }
+        .feature-card p { color: var(--text-light); line-height: 1.5; font-size: 0.9rem; }
+        
+        .unique-features { max-width: 1000px; margin: 0 auto; }
+        .unique-item { display: flex; gap: 2rem; align-items: flex-start; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 20px; margin-bottom: 1rem; backdrop-filter: blur(10px); transition: all 0.3s ease; }
+        .unique-item:hover { background: rgba(255, 255, 255, 0.2); transform: translateX(10px); }
+        .unique-number { font-size: 2.5rem; font-weight: 800; opacity: 0.3; line-height: 1; min-width: 60px; }
+        .unique-content h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .unique-content p { opacity: 0.9; line-height: 1.5; font-size: 0.95rem; }
+        
+        .tech-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+        .tech-card { text-align: center; padding: 1.5rem 1rem; background: var(--background); border-radius: 16px; transition: all 0.3s ease; }
         .tech-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(147, 25, 35, 0.15); }
-        .tech-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .tech-card h4 { font-size: 1rem; margin-bottom: 0.25rem; color: var(--text-dark); }
-        .tech-card p { font-size: 0.85rem; color: var(--text-light); }
-        .download { padding: 6rem 2rem; background: var(--background); }
-        .download-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; background: var(--white); padding: 3rem; border-radius: 30px; box-shadow: 0 20px 60px rgba(147, 25, 35, 0.1); }
-        .download-content h2 { font-size: 2rem; margin-bottom: 1rem; }
-        .download-content > p { color: var(--text-light); margin-bottom: 2rem; }
-        .download-info { display: flex; gap: 2rem; margin-bottom: 2rem; }
+        .tech-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .tech-card h4 { font-size: 0.9rem; margin-bottom: 0.25rem; color: var(--text-dark); }
+        .tech-card p { font-size: 0.8rem; color: var(--text-light); }
+        
+        .team-section { background: var(--white); }
+        .team-container { max-width: 1000px; margin: 0 auto; }
+        .team-info { background: var(--background); border-radius: 20px; padding: 2rem; margin-bottom: 2rem; }
+        .team-info h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1.2rem; }
+        .team-info p { color: var(--text-light); line-height: 1.6; margin-bottom: 0.5rem; }
+        .team-members { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+        .member-card { background: var(--white); border: 1px solid #eee; border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 0.3s; }
+        .member-card:hover { box-shadow: 0 10px 30px rgba(147, 25, 35, 0.1); transform: translateY(-5px); }
+        .member-avatar { width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; color: white; }
+        .member-card h4 { font-size: 1rem; margin-bottom: 0.25rem; }
+        .member-card .mssv { font-size: 0.8rem; color: var(--primary); margin-bottom: 0.5rem; }
+        .member-card .role { font-size: 0.85rem; color: var(--text-light); }
+        
+        .download { padding: 5rem 2rem; background: var(--background); }
+        .download-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; background: var(--white); padding: 2.5rem; border-radius: 30px; box-shadow: 0 20px 60px rgba(147, 25, 35, 0.1); }
+        .download-content h2 { font-size: 1.8rem; margin-bottom: 0.75rem; }
+        .download-content > p { color: var(--text-light); margin-bottom: 1.5rem; }
+        .download-info { display: flex; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
         .info-item { display: flex; flex-direction: column; }
-        .info-label { font-size: 0.85rem; color: var(--text-light); }
+        .info-label { font-size: 0.8rem; color: var(--text-light); }
         .info-value { font-weight: 600; color: var(--primary); }
-        .btn-large { padding: 1.25rem 3rem; font-size: 1.1rem; }
-        .download-note { margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-light); }
-        .download-qr { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-        .qr-container { background: var(--white); padding: 1rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(147, 25, 35, 0.15); border: 3px solid var(--primary); }
+        .btn-large { padding: 1.1rem 2.5rem; font-size: 1rem; }
+        .download-note { margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-light); }
+        .download-qr { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+        .qr-container { background: var(--white); padding: 1rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(147, 25, 35, 0.15); border: 3px solid var(--primary); }
         .qr-container canvas, .qr-container img { display: block; border-radius: 8px; }
-        .qr-label { text-align: center; font-weight: 600; color: var(--primary); font-size: 0.95rem; }
-        .qr-label span { display: block; font-size: 0.8rem; color: var(--text-light); font-weight: 400; margin-top: 0.25rem; }
-        footer { background: var(--text-dark); color: var(--white); padding: 4rem 2rem 2rem; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .qr-label { text-align: center; font-weight: 600; color: var(--primary); font-size: 0.9rem; }
+        .qr-label span { display: block; font-size: 0.75rem; color: var(--text-light); font-weight: 400; margin-top: 0.25rem; }
+        
+        .stats-section { background: linear-gradient(135deg, var(--primary), var(--accent)); padding: 3rem 2rem; }
+        .stats-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; color: white; }
+        .stat-item h3 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .stat-item p { opacity: 0.9; font-size: 0.9rem; }
+        
+        footer { background: var(--text-dark); color: var(--white); padding: 3rem 2rem 1.5rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
         .footer-brand .logo { margin-bottom: 1rem; }
         .footer-brand .logo span { background: linear-gradient(135deg, var(--secondary), #FFD54F); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .footer-brand p { opacity: 0.7; line-height: 1.6; }
-        .footer-links h4, .footer-contact h4 { margin-bottom: 1rem; color: var(--secondary); }
-        .footer-links a { display: block; color: var(--white); text-decoration: none; opacity: 0.7; margin-bottom: 0.5rem; transition: opacity 0.3s; }
+        .footer-brand p { opacity: 0.7; line-height: 1.6; font-size: 0.9rem; }
+        .footer-links h4, .footer-contact h4 { margin-bottom: 1rem; color: var(--secondary); font-size: 1rem; }
+        .footer-links a { display: block; color: var(--white); text-decoration: none; opacity: 0.7; margin-bottom: 0.5rem; transition: opacity 0.3s; font-size: 0.9rem; }
         .footer-links a:hover { opacity: 1; }
-        .footer-contact p { opacity: 0.7; margin-bottom: 0.5rem; }
-        .footer-bottom { text-align: center; padding-top: 2rem; opacity: 0.7; }
+        .footer-contact p { opacity: 0.7; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .footer-bottom { text-align: center; padding-top: 1.5rem; opacity: 0.7; font-size: 0.85rem; }
+        
         @media (max-width: 768px) {
             .hero-container { grid-template-columns: 1fr; text-align: center; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .hero-buttons { justify-content: center; }
-            .phone-mockup { width: 250px; height: 500px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-buttons, .hero-badges { justify-content: center; }
+            .phone-mockup { width: 220px; height: 440px; }
             .nav-links { display: none; }
-            .highlight-item { flex-direction: column; gap: 1rem; }
+            .unique-item { flex-direction: column; gap: 1rem; }
             .download-container { grid-template-columns: 1fr; text-align: center; }
             .download-info { justify-content: center; }
             .footer-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
     <div class="bg-animation" id="bgAnimation"></div>
+    
     <header>
         <nav>
             <div class="logo">🍵 <span>UTE Tea</span></div>
             <ul class="nav-links">
                 <li><a href="#features">Tính năng</a></li>
-                <li><a href="#highlights">Điểm nổi bật</a></li>
+                <li><a href="#unique">Điểm nổi bật</a></li>
                 <li><a href="#tech">Công nghệ</a></li>
+                <li><a href="#team">Nhóm phát triển</a></li>
                 <li><a href="#download">Tải app</a></li>
             </ul>
         </nav>
@@ -143,113 +175,249 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1>Đặt trà sữa<br><span class="highlight">thông minh</span><br>với AI</h1>
-                <p>UTE Tea - Ứng dụng đặt trà sữa hiện đại với Voice Order, AI gợi ý món theo thời tiết, Group Order và hệ thống tích điểm hấp dẫn. Trải nghiệm đặt hàng chưa từng có!</p>
+                <div class="hero-badges">
+                    <span class="badge badge-android">Android</span>
+                    <span class="badge badge-kotlin">Kotlin</span>
+                    <span class="badge badge-spring">Spring Boot</span>
+                    <span class="badge badge-ai">AI Powered</span>
+                </div>
+                <p>UTE Tea - Ứng dụng đặt trà sữa hiện đại với <strong>Voice Order</strong>, <strong>AI Predictive Order</strong> gợi ý món theo thời tiết, <strong>Group Order</strong> đặt hàng nhóm và hệ thống <strong>Loyalty 4 cấp độ</strong>. Đồ án môn Lập trình Di động - ĐH SPKT TP.HCM.</p>
                 <div class="hero-buttons">
                     <a href="Houjicha-Uteatea.apk" class="btn btn-primary" download>📥 Tải APK ngay</a>
                     <a href="#features" class="btn btn-secondary">Khám phá thêm</a>
                 </div>
+                <div class="project-links">
+                    <a href="https://www.figma.com/design/yhuF1q4Lfc6BlfDBDy66iW/BaoCaoCuoiKy?node-id=0-1&t=bx5zRZIplwZ1RZFx-1" target="_blank" class="link-btn link-figma">🎨 Figma Design</a>
+                    <a href="https://github.com/vanity1412/Backend_APP" target="_blank" class="link-btn link-github">⚙️ Backend</a>
+                    <a href="https://github.com/AnKunnnn29/doanltdd" target="_blank" class="link-btn link-github">📱 Android App</a>
+                </div>
             </div>
             <div class="hero-image">
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                        <img src="Screenshot 2025-12-01 142002.png" alt="UTE Tea App Screenshot">
-                    </div>
+                <div class="banner-container">
+                    <img src="banner.png" alt="UTE Tea App Banner">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="features" id="features">
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item"><h3>16+</h3><p>Nhóm chức năng</p></div>
+            <div class="stat-item"><h3>100+</h3><p>API Endpoints</p></div>
+            <div class="stat-item"><h3>4</h3><p>Cấp độ Loyalty</p></div>
+            <div class="stat-item"><h3>3</h3><p>Vai trò người dùng</p></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section section-white" id="features">
         <div class="section-title">
-            <h2>✨ Tính năng nổi bật</h2>
-            <p>Trải nghiệm đặt trà sữa hoàn toàn mới với công nghệ AI tiên tiến</p>
+            <h2>✨ Tính năng chính</h2>
+            <p>Hệ thống đầy đủ cho User, Manager và Admin</p>
         </div>
         <div class="features-grid">
             <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Xác thực & Bảo mật</h3>
+                <p>JWT Authentication, Biometric Login (vân tay), OTP qua Email/SMS, Auto Refresh Token, phân quyền User/Manager/Admin.</p>
+            </div>
+            <div class="feature-card">
                 <div class="feature-icon">🎤</div>
-                <h3>Voice Order</h3>
-                <p>Đặt hàng bằng giọng nói tiếng Việt với AI Speech Recognition. Chỉ cần nói tên món, app sẽ tự động thêm vào giỏ hàng.</p>
+                <h3>Voice Order & Search</h3>
+                <p>Đặt hàng bằng giọng nói tiếng Việt với Speech-to-Text. Tìm kiếm nhanh, chuẩn hóa bỏ dấu, fuzzy matching.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🔮</div>
                 <h3>AI Predictive Order</h3>
-                <p>Gợi ý món thông minh dựa trên lịch sử đặt hàng, thời tiết hiện tại và thời gian trong ngày.</p>
+                <p>Gợi ý món thông minh dựa trên lịch sử đặt hàng, thời gian trong ngày và thời tiết hiện tại với độ tin cậy.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">👥</div>
                 <h3>Group Order</h3>
-                <p>Đặt hàng nhóm với bạn bè qua mã mời 6 ký tự. Chat real-time và thanh toán chung tiện lợi.</p>
+                <p>Đặt hàng nhóm với invite code 6 ký tự, chat realtime, host lock/unlock, checkout chung, tích hợp Google Map.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🎡</div>
-                <h3>Spin Wheel & Loyalty</h3>
-                <p>Hệ thống tích điểm 4 cấp độ (Bronze/Silver/Gold/Diamond) với vòng quay may mắn nhận voucher.</p>
+                <h3>Loyalty & Spin Wheel</h3>
+                <p>Hệ thống tích điểm 4 cấp (Bronze/Silver/Gold/Diamond), vòng quay may mắn nhận voucher, tier discount.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛒</div>
+                <h3>Giỏ hàng & Checkout</h3>
+                <p>Chọn size/topping, tính giá realtime, áp voucher kết hợp, OTP xác thực, bill preview trước khi đặt.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3>Đa dạng thanh toán</h3>
+                <p>Hỗ trợ COD, VNPay, MoMo, PayPal, VietQR. Tính phí ship theo khoảng cách với GHN API.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>Theo dõi đơn hàng</h3>
+                <p>Realtime tracking qua WebSocket (PENDING → MAKING → SHIPPING → DONE), push notification khi đổi trạng thái.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">💬</div>
                 <h3>Live Chat Support</h3>
-                <p>Hỗ trợ khách hàng real-time với nhân viên. Giải đáp thắc mắc nhanh chóng.</p>
+                <p>Hỗ trợ khách hàng realtime với Manager, upload ảnh, chatbot AI trả lời tự động FAQ.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🌸</div>
                 <h3>Seasonal Effects</h3>
                 <p>Hiệu ứng theo mùa: tuyết rơi Giáng sinh, hoa đào Tết, lá vàng mùa thu, bong bóng mùa hè.</p>
             </div>
-        </div>
-    </section>
-
-    <section class="highlights" id="highlights">
-        <div class="section-title">
-            <h2>🎯 Điểm nổi bật</h2>
-            <p>Những tính năng độc đáo chỉ có tại UTE Tea</p>
-        </div>
-        <div class="highlights-container">
-            <div class="highlight-item">
-                <div class="highlight-number">01</div>
-                <div class="highlight-content">
-                    <h3>🔐 Đăng nhập vân tay</h3>
-                    <p>Bảo mật tối đa với Biometric Authentication và mã hóa KeyStore. Đăng nhập nhanh chóng, an toàn tuyệt đối.</p>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Dashboard Manager</h3>
+                <p>Thống kê doanh thu, dự báo, giờ cao điểm, quản lý đơn/sản phẩm/voucher/người dùng.</p>
             </div>
-            <div class="highlight-item">
-                <div class="highlight-number">02</div>
-                <div class="highlight-content">
-                    <h3>💳 Đa dạng thanh toán</h3>
-                    <p>Hỗ trợ COD, VNPay, VietQR. Xác thực OTP trước khi đặt hàng đảm bảo an toàn giao dịch.</p>
-                </div>
-            </div>
-            <div class="highlight-item">
-                <div class="highlight-number">03</div>
-                <div class="highlight-content">
-                    <h3>📦 Theo dõi đơn hàng</h3>
-                    <p>Real-time tracking từ lúc đặt đến khi nhận. Thông báo push khi đơn hàng thay đổi trạng thái.</p>
-                </div>
-            </div>
-            <div class="highlight-item">
-                <div class="highlight-number">04</div>
-                <div class="highlight-content">
-                    <h3>🎁 Voucher thông minh</h3>
-                    <p>Kết hợp voucher khuyến mãi và phần thưởng từ vòng quay. Tiết kiệm tối đa cho mỗi đơn hàng.</p>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Admin Monitoring</h3>
+                <p>Giám sát hành vi user, Risk Score algorithm, automated alerts, IP blocking, rate limiting.</p>
             </div>
         </div>
     </section>
 
-    <section class="tech" id="tech">
+    <!-- Unique Features Section -->
+    <section class="section section-gradient" id="unique">
         <div class="section-title">
-            <h2>🚀 Công nghệ hiện đại</h2>
-            <p>Được xây dựng với những công nghệ tiên tiến nhất</p>
+            <h2>🎯 8 Tính năng độc đáo</h2>
+            <p>Những điểm nổi bật chỉ có tại UTE Tea</p>
+        </div>
+        <div class="unique-features">
+            <div class="unique-item">
+                <div class="unique-number">01</div>
+                <div class="unique-content">
+                    <h3>🎤 Voice Order - Đặt hàng bằng giọng nói</h3>
+                    <p>Speech-to-Text chuyển giọng nói tiếng Việt thành text, tự động tìm món và thêm vào giỏ hàng. Hỗ trợ Voice Search trong menu.</p>
+                </div>
+            </div>
+            <div class="unique-item">
+                <div class="unique-number">02</div>
+                <div class="unique-content">
+                    <h3>🔮 AI Predictive Order - Gợi ý thông minh</h3>
+                    <p>Phân tích TimeScore, DayScore, RecencyScore, FrequencyScore kết hợp thời tiết để gợi ý món phù hợp nhất với độ tin cậy cao.</p>
+                </div>
+            </div>
+            <div class="unique-item">
+                <div class="unique-number">03</div>
+                <div class="unique-content">
+                    <h3>👥 Group Order - Đặt hàng nhóm realtime</h3>
+                    <p>Tạo phiên nhóm với invite code 6 ký tự, thành viên cùng thêm món, chat realtime qua WebSocket, host checkout chung.</p>
+                </div>
+            </div>
+            <div class="unique-item">
+                <div class="unique-number">04</div>
+                <div class="unique-content">
+                    <h3>🎡 4-Tier Loyalty + Spin Wheel</h3>
+                    <p>Hệ thống Bronze/Silver/Gold/Diamond với quyền lợi riêng, vòng quay may mắn nhận voucher theo xác suất, tự động nâng hạng.</p>
+                </div>
+            </div>
+            <div class="unique-item">
+                <div class="unique-number">05</div>
+                <div class="unique-content">
+                    <h3>🌸 Seasonal Effects - Hiệu ứng theo mùa</h3>
+                    <p>Giao diện thay đổi theo mùa và sự kiện: tuyết rơi, hoa đào, lá vàng, bong bóng... tạo trải nghiệm sinh động.</p>
+                </div>
+            </div>
+            <div class="unique-item">
+                <div class="unique-number">06</div>
+                <div class="unique-content">
+                    <h3>🛡️ User Monitoring - Giám sát bảo mật</h3>
+                    <p>Risk Score algorithm phát hiện hành vi bất thường, automated alerts, IP blocking, rate limiting bảo vệ hệ thống.</p>
+                </div>
+            </div>
+            <div class="unique-item">
+                <div class="unique-number">07</div>
+                <div class="unique-content">
+                    <h3>💬 Live Chat + Chatbot AI</h3>
+                    <p>Hỗ trợ khách hàng realtime với Manager, chatbot AI trả lời tự động FAQ, escalate to human khi cần.</p>
+                </div>
+            </div>
+            <div class="unique-item">
+                <div class="unique-number">08</div>
+                <div class="unique-content">
+                    <h3>🔐 Biometric Security</h3>
+                    <p>Đăng nhập vân tay với Android KeyStore encryption, EncryptedSharedPreferences, JWT auto-refresh an toàn tuyệt đối.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Section -->
+    <section class="section section-white" id="tech">
+        <div class="section-title">
+            <h2>🚀 Công nghệ sử dụng</h2>
+            <p>Xây dựng với những công nghệ hiện đại nhất</p>
         </div>
         <div class="tech-grid">
-            <div class="tech-card"><div class="tech-icon">📱</div><h4>Android Native</h4><p>Kotlin + MVVM</p></div>
-            <div class="tech-card"><div class="tech-icon">⚡</div><h4>Spring Boot</h4><p>Backend API</p></div>
-            <div class="tech-card"><div class="tech-icon">🗄️</div><h4>MySQL 8.0</h4><p>Cloud Database</p></div>
-            <div class="tech-card"><div class="tech-icon">🔌</div><h4>WebSocket</h4><p>Real-time</p></div>
-            <div class="tech-card"><div class="tech-icon">🔒</div><h4>JWT Auth</h4><p>Bảo mật</p></div>
-            <div class="tech-card"><div class="tech-icon">🤖</div><h4>AI/ML</h4><p>Gợi ý thông minh</p></div>
+            <div class="tech-card"><div class="tech-icon">📱</div><h4>Kotlin 100%</h4><p>Android Native</p></div>
+            <div class="tech-card"><div class="tech-icon">🏗️</div><h4>MVVM</h4><p>Architecture</p></div>
+            <div class="tech-card"><div class="tech-icon">⚡</div><h4>Spring Boot 3.5</h4><p>Backend API</p></div>
+            <div class="tech-card"><div class="tech-icon">☕</div><h4>Java 17</h4><p>Server-side</p></div>
+            <div class="tech-card"><div class="tech-icon">🗄️</div><h4>MySQL 8.0</h4><p>Database</p></div>
+            <div class="tech-card"><div class="tech-icon">🔌</div><h4>WebSocket</h4><p>Realtime</p></div>
+            <div class="tech-card"><div class="tech-icon">🔒</div><h4>JWT + KeyStore</h4><p>Security</p></div>
+            <div class="tech-card"><div class="tech-icon">🔔</div><h4>OneSignal</h4><p>Push Notification</p></div>
+            <div class="tech-card"><div class="tech-icon">💳</div><h4>VNPay/MoMo</h4><p>Payment</p></div>
+            <div class="tech-card"><div class="tech-icon">📧</div><h4>SendGrid</h4><p>Email Service</p></div>
+            <div class="tech-card"><div class="tech-icon">🖼️</div><h4>Cloudinary</h4><p>Image CDN</p></div>
+            <div class="tech-card"><div class="tech-icon">🐳</div><h4>Docker</h4><p>Deployment</p></div>
         </div>
     </section>
 
+    <!-- Team Section -->
+    <section class="section team-section" id="team">
+        <div class="section-title">
+            <h2>👥 Nhóm phát triển</h2>
+            <p>Đồ án Lập trình Di động - Nhóm 3</p>
+        </div>
+        <div class="team-container">
+            <div class="team-info">
+                <h3>📚 Thông tin đồ án</h3>
+                <p><strong>Trường:</strong> Đại học Sư phạm Kỹ thuật TP. Hồ Chí Minh</p>
+                <p><strong>Khoa:</strong> Công nghệ Thông tin</p>
+                <p><strong>Môn học:</strong> Lập trình Di động (MOPR331279)</p>
+                <p><strong>Giảng viên:</strong> Nguyễn Hữu Trung</p>
+                <p><strong>Thời gian:</strong> Tháng 01/2026</p>
+                <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <a href="https://www.figma.com/design/yhuF1q4Lfc6BlfDBDy66iW/BaoCaoCuoiKy?node-id=0-1&t=bx5zRZIplwZ1RZFx-1" target="_blank" class="link-btn link-figma">🎨 Figma Design</a>
+                    <a href="https://github.com/vanity1412/Backend_APP" target="_blank" class="link-btn link-github">⚙️ GitHub Backend</a>
+                    <a href="https://github.com/AnKunnnn29/doanltdd" target="_blank" class="link-btn link-github">📱 GitHub Android App</a>
+                </div>
+            </div>
+            <div class="team-members">
+                <div class="member-card">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h4>Nguyễn Thành An</h4>
+                    <p class="mssv">23162001</p>
+                    <p class="role">UI/UX Android & Trải nghiệm người dùng</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h4>Vũ Văn Thông</h4>
+                    <p class="mssv">23162098</p>
+                    <p class="role">Manager/Admin & Monitoring System</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h4>Huỳnh Thanh Tú</h4>
+                    <p class="mssv">23162111</p>
+                    <p class="role">Cart, Checkout, Payment & Figma</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h4>Xín Lợi Huy</h4>
+                    <p class="mssv">23110231</p>
+                    <p class="role">Authentication & Security</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
     <section class="download" id="download">
         <div class="download-container">
             <div class="download-content">
@@ -258,10 +426,11 @@
                 <div class="download-info">
                     <div class="info-item"><span class="info-label">Phiên bản</span><span class="info-value">1.0.0</span></div>
                     <div class="info-item"><span class="info-label">Kích thước</span><span class="info-value">~25 MB</span></div>
-                    <div class="info-item"><span class="info-label">Yêu cầu</span><span class="info-value">Android 7.0+</span></div>
+                    <div class="info-item"><span class="info-label">Yêu cầu</span><span class="info-value">Android 7.0+ (SDK 24)</span></div>
+                    <div class="info-item"><span class="info-label">Target</span><span class="info-value">Android 14 (SDK 34)</span></div>
                 </div>
                 <a href="Houjicha-Uteatea.apk" class="btn btn-primary btn-large" download>📥 Tải APK (Android)</a>
-                <p class="download-note">💡 Sau khi tải, mở file APK và cho phép cài đặt từ nguồn không xác định</p>
+                <p class="download-note">💡 Sau khi tải, mở file APK và cho phép cài đặt từ nguồn không xác định trong Settings</p>
             </div>
             <div class="download-qr">
                 <div class="qr-container">
@@ -272,27 +441,30 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
                 <div class="logo">🍵 <span>UTE Tea</span></div>
-                <p>Ứng dụng đặt trà sữa thông minh<br>dành cho sinh viên UTE</p>
+                <p>Ứng dụng đặt trà sữa thông minh với AI<br>Đồ án Lập trình Di động - Nhóm 3<br>ĐH Sư phạm Kỹ thuật TP.HCM</p>
             </div>
             <div class="footer-links">
                 <h4>Liên kết</h4>
                 <a href="#features">Tính năng</a>
-                <a href="#highlights">Điểm nổi bật</a>
+                <a href="#unique">Điểm nổi bật</a>
                 <a href="#tech">Công nghệ</a>
+                <a href="#team">Nhóm phát triển</a>
                 <a href="#download">Tải app</a>
             </div>
             <div class="footer-contact">
-                <h4>Liên hệ</h4>
-                <p>📧 utetea@ute.edu.vn</p>
-                <p>📍 Đại học Sư phạm Kỹ thuật TP.HCM</p>
+                <h4>Source Code</h4>
+                <p><a href="https://www.figma.com/design/yhuF1q4Lfc6BlfDBDy66iW/BaoCaoCuoiKy?node-id=0-1" target="_blank" style="color: #FFB74D;">🎨 Figma Design</a></p>
+                <p><a href="https://github.com/vanity1412/Backend_APP" target="_blank" style="color: #FFB74D;">⚙️ GitHub Backend</a></p>
+                <p><a href="https://github.com/AnKunnnn29/doanltdd" target="_blank" style="color: #FFB74D;">📱 GitHub App</a></p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>🍵 Made with ❤️ by UTE Tea Team © 2025</p>
+            <p>🍵 Made with ❤️ by UTE Tea Team - Nhóm 3 © 2026</p>
         </div>
     </footer>
 
@@ -301,10 +473,10 @@
         function createBubbles() {
             const container = document.getElementById('bgAnimation');
             const colors = ['#931923', '#B8293A', '#FFB74D', '#FCE4EC'];
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 15; i++) {
                 const bubble = document.createElement('div');
                 bubble.className = 'bubble';
-                bubble.style.width = Math.random() * 100 + 50 + 'px';
+                bubble.style.width = Math.random() * 80 + 40 + 'px';
                 bubble.style.height = bubble.style.width;
                 bubble.style.left = Math.random() * 100 + '%';
                 bubble.style.background = colors[Math.floor(Math.random() * colors.length)];
@@ -319,19 +491,25 @@
             const currentUrl = window.location.href;
             const apkUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1) + 'Houjicha-Uteatea.apk';
             
-            QRCode.toCanvas(document.createElement('canvas'), apkUrl, {
-                width: 180,
-                margin: 2,
-                color: { dark: '#931923', light: '#ffffff' }
-            }, function(error, canvas) {
-                if (error) {
-                    console.error(error);
-                    // Fallback: show placeholder
-                    document.getElementById('qrcode').innerHTML = '<div style="width:180px;height:180px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#931923,#B8293A);color:white;border-radius:10px;flex-direction:column;"><span style="font-size:3rem;">🍵</span><p style="margin-top:0.5rem;font-weight:600;">UTE Tea</p></div>';
-                    return;
-                }
-                document.getElementById('qrcode').appendChild(canvas);
-            });
+            if (typeof QRCode !== 'undefined') {
+                QRCode.toCanvas(document.createElement('canvas'), apkUrl, {
+                    width: 160,
+                    margin: 2,
+                    color: { dark: '#931923', light: '#ffffff' }
+                }, function(error, canvas) {
+                    if (error) {
+                        showQRFallback();
+                        return;
+                    }
+                    document.getElementById('qrcode').appendChild(canvas);
+                });
+            } else {
+                showQRFallback();
+            }
+        }
+
+        function showQRFallback() {
+            document.getElementById('qrcode').innerHTML = '<div style="width:160px;height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#931923,#B8293A);color:white;border-radius:10px;flex-direction:column;"><span style="font-size:2.5rem;">🍵</span><p style="margin-top:0.5rem;font-weight:600;font-size:0.9rem;">UTE Tea</p></div>';
         }
 
         // Smooth scroll
@@ -348,4 +526,4 @@
         generateQR();
     </script>
 </body>
-</html>""
+</html>
